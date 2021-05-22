@@ -1,0 +1,63 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: pruebaeveris
+  namespace: '354978362436'
+  selfLink: /apis/serving.knative.dev/v1/namespaces/354978362436/services/pruebaeveris
+  uid: 3674cd02-ae80-4c3a-9d83-9119f43ca66d
+  resourceVersion: AAXC7KEuolQ
+  generation: 2
+  creationTimestamp: '2021-05-22T15:13:25.354883Z'
+  labels:
+    cloud.googleapis.com/location: us-central1
+  annotations:
+    run.googleapis.com/client-name: cloud-console
+    serving.knative.dev/creator: boristravi@gmail.com
+    serving.knative.dev/lastModifier: boristravi@gmail.com
+    client.knative.dev/user-image: gcr.io/mypythonapp-314502/pruebaeveris@sha256:f5195e990034e2e0957d56bac7a76e7b3b2b1aed1254cadf4a4888ece657dcb7
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+spec:
+  template:
+    metadata:
+      name: pruebaeveris-00002-rog
+      annotations:
+        run.googleapis.com/client-name: cloud-console
+        autoscaling.knative.dev/maxScale: '100'
+        run.googleapis.com/sandbox: gvisor
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      serviceAccountName: 354978362436-compute@developer.gserviceaccount.com
+      containers:
+      - image: gcr.io/mypythonapp-314502/pruebaeveris@sha256:f5195e990034e2e0957d56bac7a76e7b3b2b1aed1254cadf4a4888ece657dcb7
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+  traffic:
+  - percent: 100
+    latestRevision: true
+status:
+  observedGeneration: 2
+  conditions:
+  - type: Ready
+    status: 'True'
+    lastTransitionTime: '2021-05-22T15:14:15.692783Z'
+  - type: ConfigurationsReady
+    status: 'True'
+    lastTransitionTime: '2021-05-22T15:14:09.518863Z'
+  - type: RoutesReady
+    status: 'True'
+    lastTransitionTime: '2021-05-22T15:14:15.811668Z'
+  latestReadyRevisionName: pruebaeveris-00002-rog
+  latestCreatedRevisionName: pruebaeveris-00002-rog
+  traffic:
+  - revisionName: pruebaeveris-00002-rog
+    percent: 100
+    latestRevision: true
+  url: https://pruebaeveris-qmlvk7db5a-uc.a.run.app
+  address:
+    url: https://pruebaeveris-qmlvk7db5a-uc.a.run.app
